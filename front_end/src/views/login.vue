@@ -56,7 +56,7 @@ export default {
         this.errorlogin = 'Mail or Password invalid try again'
       } else {
         this.errorlogin = ''
-        localStorage.setItem('token', data.accessToken)
+        localStorage.setItem('token', data.Result)
         localStorage.setItem('mail', this.maillogin)
         console.log(localStorage)
         this.$router.push('/home')
