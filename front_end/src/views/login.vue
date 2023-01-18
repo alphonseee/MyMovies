@@ -16,7 +16,7 @@
     <div class="login">
       <form @submit.prevent="loginfunction">
         <label aria-hidden="true" for="chk">Login</label>
-        <input v-model="usernamelogin" name="username" placeholder="Mail" required type="text">
+        <input v-model="maillogin" name="username" placeholder="Mail" required type="text">
         <input v-model="passwordlogin" name="password" placeholder="Password" required type="password">
         <button type="submit">Login</button>
       </form>
@@ -31,7 +31,7 @@ export default {
   name: "LoginPage",
   data() {
     return {
-      usernamelogin: '',
+      maillogin: '',
       passwordlogin: '',
       errorlogin: '',
       tokenlogin: '',
@@ -47,19 +47,19 @@ export default {
       const requestOptions = {
         method: "POST",
         headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"},
-        body: JSON.stringify({"username": this.usernamelogin, "password": this.passwordlogin}),
+        body: JSON.stringify({"mail": this.maillogin, "password": this.passwordlogin}),
 
       };
       const response = await fetch("http://localhost:3000/login", requestOptions);
       const data = await response.json();
       if (data.code == 401) {
-        this.errorlogin = 'User Name or Password invalid try again'
+        this.errorlogin = 'Mail or Password invalid try again'
       } else {
         this.errorlogin = ''
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('username', this.usernamelogin)
+        localStorage.setItem('token', data.accessToken)
+        localStorage.setItem('mail', this.maillogin)
         console.log(localStorage)
-        this.$router.push('/profil')
+        this.$router.push('/home')
 
       }
     },
