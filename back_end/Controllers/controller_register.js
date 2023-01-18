@@ -21,7 +21,7 @@ exports.createuser = function (req, res) {
             if (err) {
                 console.log(err)
             } else {
-                res.send("post")
+                res.send("Account created")
             }
         })
     });
