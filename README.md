@@ -16,9 +16,8 @@ Install everything required in the package.json.
 
 Start the back_end and nodemon
 
-```
 ### `cd front_end, npm run serve`
-```
+
 Strat running front_end
 
 ##  🔧 Authentification : 
